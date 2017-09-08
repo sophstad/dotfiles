@@ -1,6 +1,48 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
+source $HOME/.antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle encode64
+antigen bundle gem
+antigen bundle git
+antigen bundle git-extras
+antigen bundle heroku
+antigen bundle osx
+antigen bundle urltools
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+
+antigen theme $HOME/.dotfiles/zsh kirbystheme --no-local-clone
+
+antigen apply # to reflect changes made to our zsh-theme, run `antigen reset`
+
+################################################################################
+#                                 ZSH config                                   #
+################################################################################
+
+# enable vim keybindings in the shell
+bindkey -v
+
+# don't save to zsh history if suffixed with a space
+setopt HIST_IGNORE_SPACE
+
+################################################################################
+#                                 ZSH aliases                                  #
+################################################################################
+
+# 256 color hack
+alias tmux="tmux -2"
+
+################################################################################
+#                                 misc config                                  #
+################################################################################
+
+# default editor
+export EDITOR="/usr/local/bin/vim"
+
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
