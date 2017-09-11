@@ -17,5 +17,8 @@ bind -n WheelDownPane select-pane -t= \; send-keys -M
 # List of plugins
 set -g @plugin 'tmux-plugins/tmux-yank'
 
+# Allow us to open applications from within tmux
+set-option -g default-command "which reattach-to-user-namespace > /dev/null && reattach-to-user-namespace -l $SHELL || $SHELL"
+
 # Initialize TMUX plugin manager
 run '~/.tmux/plugins/tpm/tpm'
