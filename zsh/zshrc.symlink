@@ -35,6 +35,7 @@ setopt HIST_IGNORE_SPACE
 
 # 256 color hack
 alias tmux="tmux -2"
+alias school="cd ~/Documents/college/4-fall"
 
 ################################################################################
 #                                 misc config                                  #
@@ -43,12 +44,3 @@ alias tmux="tmux -2"
 # default editor
 export EDITOR="/usr/local/bin/vim"
 
-# all of our zsh files
-typeset -U config_files
-config_files=($ZSH/**/*.zsh)
-
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
