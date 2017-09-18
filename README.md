@@ -16,7 +16,7 @@ Something I found useful was implementing Docker to create testing environments.
 	```
 	{
 		"color_scheme": "Packages/User/SublimeLinter/Flatland Dark (SL).tmTheme",
-		"font_face": "Input Sans",
+		"font_face": "Input Mono",
 		"font_size": 12,
 		"ignored_packages":
 		[
