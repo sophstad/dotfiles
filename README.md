@@ -11,19 +11,18 @@ Something I found useful was implementing Docker to create testing environments.
   - Font: InputMono Light 12 pt.
 - Set up Sublime:
   - [Flatland Dark Theme](https://github.com/thinkpixellab/flatland)
-  - Configure user preferences
-
-```
-{
-	"color_scheme": "Packages/User/SublimeLinter/Flatland Dark (SL).tmTheme",
-	"font_face": "Input Sans",
-	"font_size": 12,
-	"ignored_packages":
-	[
-		"CSS"
-	],
-	"tab_size": 2,
-	"theme": "Flatland Dark.sublime-theme",
-	"translate_tabs_to_spaces": true
-}
-```
+  - Configure user preferences:
+	```
+	{
+		"color_scheme": "Packages/User/SublimeLinter/Flatland Dark (SL).tmTheme",
+		"font_face": "Input Sans",
+		"font_size": 12,
+		"ignored_packages":
+		[
+			"CSS"
+		],
+		"tab_size": 2,
+		"theme": "Flatland Dark.sublime-theme",
+		"translate_tabs_to_spaces": true
+	}
+	```
