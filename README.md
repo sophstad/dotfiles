@@ -6,6 +6,7 @@ Something I found useful was implementing Docker to create testing environments.
 
 ## Other setup stuff
 - Download Font Bureau's [Input](http://input.fontbureau.com)
+- Download [Liberation Mono](https://www.fontsquirrel.com/fonts/liberation-mono), which overrides Menlo on GitHub's website
 - Configure macOS Terminal theme:
   - [Tomorrow Night Theme](https://github.com/chriskempson/tomorrow-theme)
   - Font: InputMono Light 12 pt.
