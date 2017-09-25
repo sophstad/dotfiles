@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 
 # install commandline utils
 brew 'coreutils'
+brew 'fzf'
 brew 'grc'
 brew 'node'
 brew 'reattach-to-user-namespace'
