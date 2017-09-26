@@ -1,0 +1,31 @@
+# Todo
+
+## Misc.
+- Download and install Input font family: http://input.fontbureau.com/download/
+- Install Liberation Mono
+
+## Sublime
+- Install with Package Control
+  - Flatland: https://packagecontrol.io/packages/Theme%20-%20Flatland
+  - Babel syntax: https://packagecontrol.io/packages/Babel
+  - SublimeLinter: https://packagecontrol.io/packages/SublimeLinter
+  - SideBarEnhancements: https://packagecontrol.io/packages/SideBarEnhancements
+- Configure user preferences:
+	```
+	{
+		"color_scheme": "Packages/User/SublimeLinter/Flatland Dark (SL).tmTheme",
+		"font_face": "Input Mono",
+		"font_size": 12,
+		"ignored_packages":
+		[
+			"CSS"
+		],
+		"tab_size": 2,
+		"theme": "Flatland Dark.sublime-theme",
+		"translate_tabs_to_spaces": true
+	}
+	```
+
+## Terminal
+- Install Tomorrow Night theme
+- Set font: InputMono Light 12 pt.
