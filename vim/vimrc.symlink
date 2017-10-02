@@ -54,7 +54,7 @@ set colorcolumn=80
 
 " Add tomorrow night eighties colorscheme
 set t_Co=256
-colorscheme tomorrow-night-eighties
+colorscheme tomorrow-night
 
 " Fix Cursor in TMUX
 if exists('$TMUX')

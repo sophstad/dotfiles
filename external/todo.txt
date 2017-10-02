@@ -28,4 +28,5 @@
 
 ## Terminal
 - Install Tomorrow Night theme
+- Install Tomorrow Night vim theme: move file to ~/.vim/colors/tomorrow-night.vim
 - Set font: InputMono Light 12 pt.

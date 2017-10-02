@@ -1,7 +1,7 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
-source $HOME/.antigen/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 

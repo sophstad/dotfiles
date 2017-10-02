@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 # install commandline utils
+brew 'antigen'
 brew 'coreutils'
 brew 'fzf'
 brew 'grc'
