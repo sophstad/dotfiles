@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " let Vundle manage Vundle
-Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'digitaltoad/vim-jade'
@@ -56,7 +56,7 @@ set colorcolumn=80
 
 " Add tomorrow night eighties colorscheme
 set t_Co=256
-colorscheme tomorrow-night
+colorscheme Tomorrow-Night
 
 " Fix Cursor in TMUX
 if exists('$TMUX')
