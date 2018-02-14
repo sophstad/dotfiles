@@ -35,7 +35,7 @@ setopt HIST_IGNORE_SPACE
 
 # 256 color hack
 alias tmux="tmux -2"
-alias school="cd ~/Documents/college/4-fall"
+alias school="cd ~/Documents/college/4-spring"
 
 ################################################################################
 #                                 misc config                                  #

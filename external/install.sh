@@ -15,13 +15,29 @@ git_clone () {
   git clone https://github.com/$GIT_PATH.git $DEST
 }
 
-wget -nc -P "$RESOURCE_DIR" https://www.fontsquirrel.com/fonts/download/liberation-mono
 wget -nc -P "$INSTALLED_PACKAGES" https://packagecontrol.io/Package%20Control.sublime-package
 git_clone "chriskempson/tomorrow-theme" "$RESOURCE_DIR/tomorrow-theme"
+curl -O https://developer.apple.com/fonts/downloads/SFPro.zip
 
 if [ -e todo.txt ]
 then
     cp todo.txt $RESOURCE_DIR/todo.txt
+fi
+
+if [ -d fonts ]
+then
+  for dir in fonts/*/; do
+    if [ -d ${dir} ]; then
+      cp ${dir}*.ttf ~/Library/Fonts
+    fi
+  done
+fi
+
+if [ -e SFPro.zip ]
+then
+  unzip SFPro.zip; rm -rf __MACOSX
+  sudo installer -pkg SFPro/San\ Francisco\ Pro.pkg -target /
+  rm -rf SFPro.zip SFPro
 fi
 
 exit 0

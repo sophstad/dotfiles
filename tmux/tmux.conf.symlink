@@ -15,7 +15,13 @@ bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft=
 bind -n WheelDownPane select-pane -t= \; send-keys -M
 
 # List of plugins
+set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-save-shell-history 'on'
+
+# Allow us to rename a window manually
+set-option -g allow-rename off
 
 # Allow us to open applications from within tmux
 set-option -g default-command "which reattach-to-user-namespace > /dev/null && reattach-to-user-namespace -l $SHELL || $SHELL"

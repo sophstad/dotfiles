@@ -9,13 +9,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " let Vundle manage Vundle
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'fatih/vim-go'
+Plugin 'isRuslan/vim-es6'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'raimondi/delimitmate'
@@ -71,6 +73,11 @@ if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
 
+" Open vim to previous location
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 " ############################ keyboard shortcuts ############################
 
 " vim hard mode, forget those arrow keys!!
@@ -111,8 +118,14 @@ au BufNewFile,BufRead Vagrantfile set ft=ruby"
 " ignore node_modules DS_Store and git when using ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+" use jsx syntax in regular js files
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 " make .handlebars files have the same syntax highlighting as .html files
 au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=html
+
+" make .txt files have the same syntax highlighting as .md files
+au BufRead,BufNewFile *.txt set syntax=markdown
 
 " Follow links within .rST files using 'gf'
 let &includeexpr = 'substitute(v:fname,"^/",substitute(system("git rev-parse --show-cdup"),"\n$","", ""), "")'
