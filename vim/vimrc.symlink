@@ -22,10 +22,11 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'raimondi/delimitmate'
 Plugin 'roman/golden-ratio'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'lepture/vim-jinja'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on       " fix html and js indenting
