@@ -151,5 +151,8 @@ then
   fi
 fi
 
+chsh -s $(which zsh)
+vim +PluginInstall +qall
+
 echo ''
 echo '  All installed!'
