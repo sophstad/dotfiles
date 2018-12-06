@@ -26,6 +26,9 @@ antigen apply # to reflect changes made to our zsh-theme, run `antigen reset`
 # enable vim keybindings in the shell
 bindkey -v
 
+# enable reverse search
+bindkey '^R' history-incremental-search-backward
+
 # don't save to zsh history if suffixed with a space
 setopt HIST_IGNORE_SPACE
 
@@ -36,6 +39,27 @@ setopt HIST_IGNORE_SPACE
 # 256 color hack
 alias tmux="tmux -2"
 
+# Stitch stuff
+alias backend="cd ~/go/src/github.com/10gen/stitch && go run cmd/server/main.go --configFile ./etc/configs/local_config.json"
+alias frontend="cd ~/go/src/github.com/10gen/stitch/static/app && yarn run build"
+alias fork_backend="cd ~/go/src/github.com/sophstad/stitch && go run cmd/server/main.go --configFile ./etc/configs/local_config.json"
+alias fork_frontend="cd ~/go/src/github.com/sophstad/stitch/static/app && yarn run build"
+
+# MongoDB stuff
+alias mdb_local_start="mongod --config $HOME/dev-root/data/mongodb/local.conf"
+alias mdb_local_kill="mongo --port 27017 < $HOME/.mongo_shutdown.js"
+alias mdb_stitch_start="mongod --config $HOME/dev-root/data/mongodb/stitch.conf"
+alias mdb_stitch_kill="mongo --port 27000 < $HOME/.mongo_shutdown.js"
+alias mdb_running="ps -Aef | grep mongo"
+
+
+# $PATH manipulations
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+export PATH=$PATH:$JAVA_HOME
+export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$HOME/dev-root/meta/mongodb/stitch
+
 ################################################################################
 #                                 misc config                                  #
 ################################################################################
@@ -43,5 +67,23 @@ alias tmux="tmux -2"
 # default editor
 export EDITOR="/usr/local/bin/vim"
 
+# use gpg key for github
+export GPG_TTY=$(tty)
+
 # OPAM configuration
 . /Users/sophstad/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# JAVA
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
+# export PATH="${PATH}:${JAVA_HOME}/bin"
+
+# export ANT_HOME="/usr/local/Cellar/ant/1.10.5/libexec"
+# export ANT_OPTS="-Xms64m -Xmx1500m"
+# export PATH="${PATH}:${JAVA_HOME}/bin:${ANT_HOME}/bin"
+#
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH=$PATH:/Users/sophstad/.local/mut/bin

@@ -27,6 +27,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'lepture/vim-jinja'
 Plugin 'w0rp/ale'
+Plugin 'wincent/command-t'
 
 call vundle#end()
 filetype plugin indent on       " fix html and js indenting
@@ -118,6 +119,9 @@ au BufNewFile,BufRead Vagrantfile set ft=ruby"
 
 " ignore node_modules DS_Store and git when using ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" use go meta linter
+let g:ale_linters = {'go': ['gometalinter']}
 
 " use jsx syntax in regular js files
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
