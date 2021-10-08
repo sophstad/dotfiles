@@ -10,23 +10,17 @@ Plugin 'gmarik/Vundle.vim'
 
 " let Vundle manage Vundle
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'fatih/vim-go'
-Plugin 'isRuslan/vim-es6'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'jparise/vim-graphql'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'raimondi/delimitmate'
 Plugin 'roman/golden-ratio'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'lepture/vim-jinja'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'wincent/command-t'
 
 call vundle#end()
@@ -54,26 +48,11 @@ set wildchar=<Tab>
 set wildmenu
 
 " sets a colored column at 80 chars at a visual reference
-set colorcolumn=80
+set colorcolumn=120
 
 " Add tomorrow night eighties colorscheme
 set t_Co=256
 colorscheme Tomorrow-Night
-
-" Fix Cursor in TMUX
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-" Enable basic mouse behavior such as resizing buffers.
-set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
 
 " Open vim to previous location
 if has("autocmd")
@@ -83,14 +62,14 @@ endif
 " ############################ keyboard shortcuts ############################
 
 " vim hard mode, forget those arrow keys!!
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" noremap <up> <nop>
+" noremap <down> <nop>
+" noremap <left> <nop>
+" noremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 
 "  vim splits
 " easier mappings for switching panes
@@ -120,8 +99,25 @@ au BufNewFile,BufRead Vagrantfile set ft=ruby"
 " ignore node_modules DS_Store and git when using ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-" use go meta linter
-let g:ale_linters = {'go': ['gometalinter']}
+" use prettier js linter
+let g:ale_fixers = {
+\   'css': ['prettier'],
+\   'javascript': ['prettier'],
+\   'typescriptreact': ['prettier', 'eslint']
+\}
+
+let g:ale_linters = {
+\  'typescript': ['eslint']
+\}
+
+let g:ale_typescript_prettier_use_local_config = 1
+
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+
+let g:ale_linters_explicit = 1
+
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 " use jsx syntax in regular js files
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
