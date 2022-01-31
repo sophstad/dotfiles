@@ -17,7 +17,6 @@ git_clone () {
 
 wget -nc -P "$INSTALLED_PACKAGES" https://packagecontrol.io/Package%20Control.sublime-package
 git_clone "chriskempson/tomorrow-theme" "$RESOURCE_DIR/tomorrow-theme"
-curl -O https://developer.apple.com/fonts/downloads/SFPro.zip
 
 if [ -e todo.txt ]
 then
@@ -31,13 +30,6 @@ then
       cp ${dir}*.ttf ~/Library/Fonts
     fi
   done
-fi
-
-if [ -e SFPro.zip ]
-then
-  unzip SFPro.zip; rm -rf __MACOSX
-  sudo installer -pkg SFPro/San\ Francisco\ Pro.pkg -target /
-  rm -rf SFPro.zip SFPro
 fi
 
 exit 0
