@@ -6,10 +6,8 @@ source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle encode64
-antigen bundle gem
 antigen bundle git
 antigen bundle git-extras
-antigen bundle heroku
 antigen bundle osx
 antigen bundle urltools
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -36,29 +34,21 @@ setopt HIST_IGNORE_SPACE
 #                                 ZSH aliases                                  #
 ################################################################################
 
-# 256 color hack
-alias tmux="tmux -2"
+# evergreen deploys
+alias efab="fab -r ~/10gen/kernel-tools/evergreen"
 
-# Stitch stuff
-alias backend="cd ~/go/src/github.com/10gen/stitch && go run cmd/server/main.go --configFile ./etc/configs/local_config.json"
-alias frontend="cd ~/go/src/github.com/10gen/stitch/static/app && yarn run build"
-alias fork_backend="cd ~/go/src/github.com/sophstad/stitch && go run cmd/server/main.go --configFile ./etc/configs/local_config.json"
-alias fork_frontend="cd ~/go/src/github.com/sophstad/stitch/static/app && yarn run build"
-
-# MongoDB stuff
-alias mdb_local_start="mongod --config $HOME/dev-root/data/mongodb/local.conf"
-alias mdb_local_kill="mongo --port 27017 < $HOME/.mongo_shutdown.js"
-alias mdb_stitch_start="mongod --config $HOME/dev-root/data/mongodb/stitch.conf"
-alias mdb_stitch_kill="mongo --port 27000 < $HOME/.mongo_shutdown.js"
-alias mdb_running="ps -Aef | grep mongo"
-
+# cd to evergreen root
+alias cde='cd ~/go/src/github.com/evergreen-ci/evergreen/'
+alias cds='cd ~/evergreen-ci/spruce/'
 
 # $PATH manipulations
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-export PATH=$PATH:$JAVA_HOME
-export PATH=$PATH:$GOBIN
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$HOME/dev-root/meta/mongodb/stitch
+
+# Go PATH manipulations
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/go/bin
+export GO111MODULE="auto"
+export GOMODCACHE=$(go env GOMODCACHE)
 
 ################################################################################
 #                                 misc config                                  #
@@ -70,20 +60,6 @@ export EDITOR="/usr/local/bin/vim"
 # use gpg key for github
 export GPG_TTY=$(tty)
 
-# OPAM configuration
-. /Users/sophstad/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# JAVA
-# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
-# export PATH="${PATH}:${JAVA_HOME}/bin"
-
-# export ANT_HOME="/usr/local/Cellar/ant/1.10.5/libexec"
-# export ANT_OPTS="-Xms64m -Xmx1500m"
-# export PATH="${PATH}:${JAVA_HOME}/bin:${ANT_HOME}/bin"
-#
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-PATH=$PATH:/Users/sophstad/.local/mut/bin

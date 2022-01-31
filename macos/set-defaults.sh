@@ -10,3 +10,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Set a faster keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 4
