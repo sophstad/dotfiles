@@ -12,6 +12,7 @@ brew 'vim'
 brew 'wget'
 
 # install apps
+cask 'aws-vault'
 cask 'brave-browser'
 cask 'dropbox'
 cask 'figma'
