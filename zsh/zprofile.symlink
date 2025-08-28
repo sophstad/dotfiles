@@ -1,0 +1,14 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+start-mongodb(){
+	mongod --dbpath ~/mdbData --replSet rs0  --fork --logpath ~/mdbData/log
+}
+
+aggo() {
+        ag --go $*
+}
+
+
+aggot() {
+        ag --file-search-regex=".*_test.go" $*
+}

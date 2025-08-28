@@ -1,29 +1,32 @@
 set nocompatible
 set number                      " show current line number even in relative mode
+set termguicolors
 filetype off
 syntax enable
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'gmarik/Vundle.vim'
+" Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'base16-project/base16-vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'fatih/vim-go'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jparise/vim-graphql'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" Plugin 'raimondi/delimitmate'
+" Plugin 'roman/golden-ratio'
+" Plugin 'tomtom/tcomment_vim'
+" Plugin 'tpope/vim-endwise'
+" Plugin 'Valloric/YouCompleteMe'
+Plug 'dense-analysis/ale'
+" Plugin 'wincent/command-t'
+Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', { 'branch': 'release'}
 
-" let Vundle manage Vundle
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fatih/vim-go'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'jparise/vim-graphql'
-Plugin 'MaxMEllon/vim-jsx-pretty'
-Plugin 'raimondi/delimitmate'
-Plugin 'roman/golden-ratio'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'dense-analysis/ale'
-Plugin 'wincent/command-t'
+call plug#end()
 
-call vundle#end()
 filetype plugin indent on       " fix html and js indenting
 
 set autoindent
@@ -47,12 +50,7 @@ set wildmode=longest:full
 set wildchar=<Tab>
 set wildmenu
 
-" sets a colored column at 80 chars at a visual reference
-set colorcolumn=120
-
-" Add tomorrow night eighties colorscheme
-set t_Co=256
-colorscheme Tomorrow-Night
+colorscheme base16-tomorrow-night
 
 " Open vim to previous location
 if has("autocmd")
@@ -71,13 +69,6 @@ endif
 " inoremap <left> <nop>
 " inoremap <right> <nop>
 
-"  vim splits
-" easier mappings for switching panes
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " correct :W to :w, :Q to :q, & :Wq to :wq
 cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
 cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))
@@ -91,18 +82,19 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nmap ,cs :let @*=expand("%")<CR>
 
 " fix my syntax highlightings
-au BufNewFile,BufRead *.json.jbuilder set ft=ruby"
-au BufNewFile,BufRead *.ejs set ft=html
-au BufNewFile,BufRead *.xm set filetype=objc
-au BufNewFile,BufRead Vagrantfile set ft=ruby"
+" au BufNewFile,BufRead *.json.jbuilder set ft=ruby"
+" au BufNewFile,BufRead *.ejs set ft=html
+" au BufNewFile,BufRead *.xm set filetype=objc
+" au BufNewFile,BufRead Vagrantfile set ft=ruby"
 
 " ignore node_modules DS_Store and git when using ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " use prettier js linter
 let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'javascript': ['prettier'],
+\   'typescript': ['prettier', 'eslint'],
 \   'typescriptreact': ['prettier', 'eslint']
 \}
 
@@ -118,12 +110,6 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
-
-" use jsx syntax in regular js files
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-" make .handlebars files have the same syntax highlighting as .html files
-au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=html
 
 " make .txt files have the same syntax highlighting as .md files
 au BufRead,BufNewFile *.txt set syntax=markdown

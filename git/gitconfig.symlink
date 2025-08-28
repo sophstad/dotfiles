@@ -18,6 +18,7 @@
         excludesfile = ~/.gitignore
         editor = vim
         filemode = false
+        gpgsign = true
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -32,3 +33,7 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+[init]
+        defaultBranch = main
+[commit]
+	gpgsign = true

@@ -1,19 +1,11 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
-source /usr/local/share/antigen/antigen.zsh
+source $(brew --prefix)/share/antigen/antigen.zsh
 
-antigen use oh-my-zsh
-
-antigen bundle encode64
-antigen bundle git
-antigen bundle git-extras
-antigen bundle osx
-antigen bundle urltools
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
 
-antigen theme $HOME/.dotfiles/zsh kirbystheme --no-local-clone
+antigen theme $HOME/.dotfiles/zsh apple --no-local-clone
 
 antigen apply # to reflect changes made to our zsh-theme, run `antigen reset`
 
@@ -34,12 +26,39 @@ setopt HIST_IGNORE_SPACE
 #                                 ZSH aliases                                  #
 ################################################################################
 
-# evergreen deploys
+alias l="ls -alF"
+
+# evergreen
 alias efab="fab -r ~/10gen/kernel-tools/evergreen"
+alias db="~/10gen/kernel-tools/evergreen/db_access.py"
+
+# evergreen deploys
+export KUBECONFIG=~/.kube/config.staging:~/.kube/config.prod
+alias deploy="~/10gen/kernel-tools/evergreen/evergreen-deploys.py"
+
+# switch to the prod context
+alias kcp="kubectl config use-context api.prod.corp.mongodb.com"
+
+# switch to the staging context
+alias kcs="kubectl config use-context api.staging.corp.mongodb.com"
+
+# set the namespace for the current context
+alias kns='kubectl config set-context $(kubectl config current-context) --namespace'
+
+# get the status of the evergreen pods
+alias evg="paste <(kubectl get pods) <(kubectl get pods -o custom-columns='VERSION_ID:.metadata.labels.evergreen/version,GIT-REVISION:.metadata.labels.evergreen/revision')"
+
+# kubectl tab completions
+autoload -Uz compinit && compinit
+source <(kubectl completion zsh)
 
 # cd to evergreen root
 alias cde='cd ~/go/src/github.com/evergreen-ci/evergreen/'
-alias cds='cd ~/evergreen-ci/spruce/'
+alias cdf='cd ~/evergreen-ci/ui/packages/fungi'
+alias cdl='cd ~/evergreen-ci/ui/packages/lib'
+alias cdp='cd ~/evergreen-ci/ui/apps/parsley'
+alias cds='cd ~/evergreen-ci/ui/apps/spruce'
+alias cdu='cd ~/evergreen-ci/ui'
 
 # $PATH manipulations
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
@@ -63,3 +82,10 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

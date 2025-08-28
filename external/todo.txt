@@ -1,9 +1,5 @@
 # Todo
 
-## Misc.
-- Download and install Input font family: http://input.fontbureau.com/download/
-- Install Liberation Mono
-
 ## Sublime
 - Install with Package Control
   - Flatland: https://packagecontrol.io/packages/Theme%20-%20Flatland
