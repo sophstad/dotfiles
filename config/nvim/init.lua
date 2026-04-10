@@ -46,9 +46,10 @@ vim.api.nvim_create_autocmd("FileType", {
 require('mini.pairs').setup()
 require('fzf-lua').setup()
 
-vim.keymap.set('n', '<leader>p', require('fzf-lua').files)
-vim.keymap.set('n', '<leader>g', require('fzf-lua').live_grep)
-vim.keymap.set('n', '<leader>b', require('fzf-lua').buffers)
+vim.keymap.set('n', '<leader>p', require('fzf-lua').files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>g', require('fzf-lua').live_grep, { desc = 'Grep project' })
+vim.keymap.set('n', '<leader>b', require('fzf-lua').buffers, { desc = 'Switch buffer' })
+vim.keymap.set('n', '<leader>?', require('fzf-lua').keymaps, { desc = 'Search keymaps' })
 require('nvim-ts-autotag').setup()
 
 vim.lsp.enable({"gopls", "tsgo"})
@@ -65,13 +66,13 @@ vim.keymap.set('n', '<leader>o', function()
   local file = vim.fn.expand('%')
   local line = vim.fn.line('.')
   vim.system({ 'gh', 'browse', file .. ':' .. line })
-end)
+end, { desc = 'Open in GitHub' })
 
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'LSP rename' })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
 vim.keymap.set('n', '<leader>f', function()
   vim.lsp.buf.format({ async = true })
-end)
+end, { desc = 'Format file' })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
