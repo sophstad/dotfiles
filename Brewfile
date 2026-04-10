@@ -11,7 +11,6 @@ brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'tree-sitter-cli'
 
-cask 'brave-browser'
 cask 'dropbox'
 cask 'figma'
 cask 'firefox'
