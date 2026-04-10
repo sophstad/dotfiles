@@ -1,0 +1,32 @@
+[include]
+	path = ~/.gitconfig.local
+[alias]
+	co = checkout
+	promote = !$ZSH/bin/git-promote
+	wtf     = !$ZSH/bin/git-wtf
+	rank-contributors = !$ZSH/bin/git-rank-contributors
+	count   = !git shortlog -sn
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[core]
+	excludesfile = ~/.config/git/ignore
+	editor = nvim
+	filemode = false
+[apply]
+	whitespace = nowarn
+[mergetool]
+	keepBackup = false
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 1
+[push]
+	default = simple
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true

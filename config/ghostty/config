@@ -1,0 +1,6 @@
+auto-update-channel = tip
+keybind = shift+enter=text:\x1b\r
+font-family = "InputMono"
+mouse-hide-while-typing = true
+theme = "Tomorrow Night"
+unfocused-split-opacity = 0.45
