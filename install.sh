@@ -20,7 +20,7 @@ fi
 
 # Symlink config directories
 echo "Linking config..."
-mkdir -p "$HOME/.config" "$HOME/.claude"
+mkdir -p "$HOME/.config"
 for dir in "$DOTFILES"/config/*/; do
   name="$(basename "$dir")"
   target="$HOME/.config/$name"
@@ -30,8 +30,6 @@ for dir in "$DOTFILES"/config/*/; do
   ln -sfn "$dir" "$target"
   echo "  ~/.config/$name"
 done
-ln -sfn "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
-echo "  ~/.claude/settings.json"
 
 # Install fonts (macOS)
 if [[ "$(uname)" == "Darwin" ]]; then
