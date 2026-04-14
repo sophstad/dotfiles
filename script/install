@@ -10,5 +10,9 @@ cd "$(dirname $0)"/..
 echo "> brew bundle"
 brew bundle
 
+# Enable pnpm via corepack (bundled with node)
+echo "> corepack enable pnpm"
+corepack enable pnpm
+
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done

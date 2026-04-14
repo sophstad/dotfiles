@@ -1,0 +1,66 @@
+################################################################################
+#                                 Go                                           #
+################################################################################
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/go/bin
+export GO111MODULE="auto"
+command -v go &>/dev/null && export GOMODCACHE=$(go env GOMODCACHE)
+
+################################################################################
+#                                 pyenv                                        #
+################################################################################
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+################################################################################
+#                                 kubectl                                      #
+################################################################################
+
+command -v kubectl &>/dev/null && source <(kubectl completion zsh)
+export KUBECONFIG=~/.kube/config.staging:~/.kube/config.prod
+
+# switch to the prod context
+alias kcp="kubectl config use-context api.prod.corp.mongodb.com"
+
+# switch to the staging context
+alias kcs="kubectl config use-context api.staging.corp.mongodb.com"
+
+# set the namespace for the current context
+alias kns='kubectl config set-context $(kubectl config current-context) --namespace'
+
+# get the status of the evergreen pods
+alias evg="paste <(kubectl get pods) <(kubectl get pods -o custom-columns='VERSION_ID:.metadata.labels.evergreen/version,GIT-REVISION:.metadata.labels.evergreen/revision')"
+
+################################################################################
+#                                 evergreen                                    #
+################################################################################
+
+alias efab="fab -r ~/10gen/kernel-tools/evergreen"
+alias db="~/10gen/kernel-tools/evergreen/db_access.py"
+alias deploy="~/10gen/kernel-tools/evergreen/evergreen-deploys.py"
+
+# cd shortcuts
+alias cde='cd ~/go/src/github.com/evergreen-ci/evergreen/'
+alias cdf='cd ~/evergreen-ci/ui/packages/fungi'
+alias cdl='cd ~/evergreen-ci/ui/packages/lib'
+alias cdp='cd ~/evergreen-ci/ui/apps/parsley'
+alias cds='cd ~/evergreen-ci/ui/apps/spruce'
+alias cdu='cd ~/evergreen-ci/ui'
+
+################################################################################
+#                                 MongoDB                                      #
+################################################################################
+
+start-mongodb() {
+  mongod --dbpath ~/mdbData --replSet rs0 --fork --logpath ~/mdbData/log
+}
+
+################################################################################
+#                                 Go file search                               #
+################################################################################
+
+aggo() { ag --go $* }
+aggot() { ag --file-search-regex=".*_test.go" $* }
