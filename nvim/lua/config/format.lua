@@ -1,0 +1,26 @@
+local opt = vim.opt
+opt.signcolumn = "yes:1" -- Always show sign column
+opt.ignorecase = true -- Ignore case in search
+opt.swapfile = false -- Disable swap files
+opt.autoindent = true -- Enable auto indentation
+opt.expandtab = true -- Use spaces instead of tabs
+opt.tabstop = 2 -- Number of spaces for a tab
+opt.softtabstop = 2 -- Number of spaces for a tab when editing
+opt.shiftwidth = 2 -- Number of spaces for autoindent
+opt.shiftround = true -- Round indent to multiple of shiftwidth
+opt.number = true -- Show line numbers
+opt.relativenumber = true -- Show relative line numbers
+opt.numberwidth = 2 -- Width of the line number column
+opt.cursorline = true -- Highlight the current line
+opt.scrolloff = 8 -- Keep 8 lines above and below the cursor
+opt.inccommand = "nosplit" -- Shows the effects of a command incrementally in the buffer
+opt.undodir = vim.fn.stdpath("state") .. "/undo" -- Directory for undo files
+opt.undofile = true -- Enable persistent undo
+opt.completeopt = { "menuone", "popup", "noselect", "fuzzy" } -- Options for completion menu
+opt.hlsearch = false -- Disable highlighting of search results
+opt.clipboard = "unnamedplus" -- Use system clipboard
+opt.foldmethod = "expr" -- Fold based on 'foldexpr'
+opt.foldexpr = "v:lua.vim.lsp.foldexpr()" -- Fold using LSP folding ranges
+opt.foldlevel = 99 -- Start with all folds open
+
+vim.diagnostic.config({ virtual_text = true })
