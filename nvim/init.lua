@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/echasnovski/mini.pairs",
+  "https://github.com/windwp/nvim-ts-autotag",
+  "https://github.com/ibhagwan/fzf-lua",
 })
 
 require("config")

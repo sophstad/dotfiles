@@ -1,6 +1,7 @@
 local opt = vim.opt
 opt.signcolumn = "yes:1" -- Always show sign column
 opt.ignorecase = true -- Ignore case in search
+opt.smartcase = true -- ...unless the pattern has uppercase
 opt.swapfile = false -- Disable swap files
 opt.autoindent = true -- Enable auto indentation
 opt.expandtab = true -- Use spaces instead of tabs
